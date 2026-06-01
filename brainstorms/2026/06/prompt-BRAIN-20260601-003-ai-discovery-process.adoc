@@ -1,0 +1,15 @@
+= Prompt Artifact
+
+[metadata]
+----
+ID: BRAIN-20260601-003
+Date: 2026-06-01
+Topic: AI Discovery Process
+ArtifactType: Prompt
+RelatedBrainstorm: BRAIN-20260601-003
+----
+
+[prompt]
+----
+brainstorm AI Discovery Process
+----

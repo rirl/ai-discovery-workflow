@@ -1,0 +1,958 @@
+## 1. Human Discussion
+
+Here’s a brainstorm for an **AI Discovery Process** — a structured way to identify, evaluate, and prioritize AI opportunities before committing to full implementation.
+
+The goal of AI discovery is to answer:
+
+> “Where can AI create meaningful value, and what should we build first?”
+
+A strong AI discovery process should avoid starting with technology for its own sake. Instead, it should begin with business problems, user needs, operational bottlenecks, data availability, and measurable outcomes.
+
+---
+
+### AI Discovery Process Overview
+
+A practical AI discovery process can be broken into these phases:
+
+1. **Context & Goals**
+2. **Stakeholder Discovery**
+3. **Workflow & Pain Point Mapping**
+4. **AI Opportunity Identification**
+5. **Data & Systems Assessment**
+6. **Feasibility & Risk Review**
+7. **Use Case Prioritization**
+8. **Prototype / Pilot Definition**
+9. **Roadmap & Business Case**
+
+---
+
+### 1. Context & Goals
+
+Start by understanding the organization’s current situation.
+
+Questions to ask:
+
+- What business goals are we trying to support?
+- Are we focused on cost reduction, revenue growth, speed, quality, personalization, compliance, or innovation?
+- What departments are most interested in AI?
+- What has already been attempted?
+- Is leadership looking for internal productivity improvements or customer-facing AI products?
+
+Example goals:
+
+- Reduce customer support response time
+- Automate document-heavy workflows
+- Improve sales team efficiency
+- Extract insights from large volumes of unstructured data
+- Improve forecasting accuracy
+- Enable employees to use internal knowledge more effectively
+
+---
+
+### 2. Stakeholder Discovery
+
+Identify the people who understand the work, own the systems, and feel the pain.
+
+Key stakeholder groups:
+
+- Executives
+- Department leaders
+- Frontline employees
+- Operations teams
+- IT / engineering
+- Data teams
+- Legal / compliance
+- Security
+- Customer-facing teams
+
+Discovery formats:
+
+- Interviews
+- Workshops
+- Shadowing sessions
+- Surveys
+- Process walkthroughs
+- Data/system reviews
+
+The most useful conversations are often with people doing repetitive, manual, frustrating, or judgment-heavy work.
+
+---
+
+### 3. Workflow & Pain Point Mapping
+
+Map current workflows before proposing AI.
+
+For each workflow, capture:
+
+- Trigger: What starts the process?
+- Inputs: What information is needed?
+- Steps: What happens manually or automatically?
+- Decisions: Where is judgment required?
+- Outputs: What is produced?
+- Systems: What tools are involved?
+- Exceptions: Where does work get stuck?
+- Metrics: How is success measured?
+
+Look for patterns like:
+
+- Repetitive manual tasks
+- Copy/paste between systems
+- Large volumes of text, calls, tickets, emails, PDFs, or images
+- Slow decision cycles
+- Knowledge trapped in people’s heads
+- Inconsistent quality
+- Backlogs
+- Compliance review burden
+- High-cost expert review
+
+---
+
+### 4. AI Opportunity Identification
+
+Once workflows and pain points are clear, translate them into possible AI use cases.
+
+Common AI opportunity categories:
+
+#### Knowledge & Search
+
+- Internal knowledge assistant
+- Policy Q&A
+- Document search
+- Technical support assistant
+- Contract or compliance lookup
+
+#### Content & Communication
+
+- Drafting emails
+- Generating reports
+- Summarizing meetings
+- Creating marketing content
+- Translating or rewriting content
+
+#### Classification & Routing
+
+- Ticket classification
+- Email triage
+- Lead scoring
+- Document categorization
+- Risk flagging
+
+#### Extraction & Structuring
+
+- Extracting data from PDFs
+- Invoice processing
+- Contract metadata extraction
+- Resume parsing
+- Medical, legal, or financial document review
+
+#### Decision Support
+
+- Forecasting
+- Recommendations
+- Anomaly detection
+- Risk scoring
+- Next-best-action suggestions
+
+#### Automation
+
+- AI workflow agents
+- Form completion
+- CRM updates
+- Back-office task automation
+- Multi-step process orchestration
+
+#### Customer Experience
+
+- Chatbots
+- Virtual agents
+- Personalized recommendations
+- Customer sentiment analysis
+- Voice-of-customer analytics
+
+---
+
+### 5. Data & Systems Assessment
+
+AI depends heavily on data quality, accessibility, and governance.
+
+Assess:
+
+- What data exists?
+- Where does it live?
+- Is it structured or unstructured?
+- Is it clean, labeled, current, and complete?
+- Who owns it?
+- Can it be accessed securely?
+- Are there privacy or regulatory constraints?
+- Are APIs available?
+- Are documents machine-readable?
+- Is there enough historical data?
+- Is human feedback available?
+
+Typical data sources:
+
+- CRM
+- ERP
+- Helpdesk tickets
+- Call transcripts
+- Emails
+- Knowledge bases
+- Documents
+- Spreadsheets
+- Databases
+- Product usage logs
+- Data warehouses
+- Collaboration tools
+
+Important point:
+
+> Some AI use cases can start with limited data using large language models, but production-grade AI still requires strong data governance and integration planning.
+
+---
+
+### 6. Feasibility & Risk Review
+
+Evaluate each use case across technical, organizational, and compliance dimensions.
+
+Questions:
+
+- Can AI solve this well enough?
+- Is the task deterministic, judgment-based, or creative?
+- What happens if the AI is wrong?
+- Is human review required?
+- Are there legal, ethical, or safety risks?
+- Does the use case involve sensitive data?
+- Is explainability required?
+- Can the workflow tolerate uncertainty?
+- How hard is integration?
+- Will users trust the system?
+
+Risk categories:
+
+- Hallucination risk
+- Data privacy risk
+- Security risk
+- Bias/fairness risk
+- Compliance risk
+- Brand/reputation risk
+- Operational dependency risk
+- Poor adoption risk
+- Integration complexity
+
+A useful rule:
+
+> Favor low-risk, high-value workflows where AI assists humans before fully automating decisions.
+
+---
+
+### 7. Use Case Prioritization
+
+Prioritize opportunities using a scoring model.
+
+Suggested dimensions:
+
+- Business value
+- User pain intensity
+- Frequency/volume
+- Data readiness
+- Technical feasibility
+- Time to pilot
+- Risk level
+- Executive sponsorship
+- Adoption likelihood
+- Measurability
+
+Example scoring matrix:
+
+| Use Case | Value | Feasibility | Risk | Data Readiness | Priority |
+|---|---:|---:|---:|---:|---:|
+| Support ticket summarization | High | High | Low | High | 1 |
+| Contract risk review | High | Medium | Medium | Medium | 2 |
+| Sales forecasting | Medium | Medium | Low | Medium | 3 |
+| Fully autonomous customer service | High | Low | High | Medium | Later |
+
+Good first AI projects usually have:
+
+- Clear ROI
+- Manageable scope
+- Available data
+- Internal users
+- Human-in-the-loop review
+- Low compliance exposure
+- Fast pilot timeline
+
+---
+
+### 8. Prototype / Pilot Definition
+
+For top use cases, define a focused pilot.
+
+A pilot should answer:
+
+- What will be built?
+- Who will use it?
+- What data will it use?
+- What workflow will it fit into?
+- What decisions will AI make or assist with?
+- What will humans review?
+- What does success look like?
+- How long will the pilot run?
+- What are the go/no-go criteria?
+
+Pilot success metrics:
+
+- Time saved
+- Cost reduced
+- Accuracy improved
+- Error rate reduced
+- Customer satisfaction improved
+- Employee satisfaction improved
+- Throughput increased
+- Revenue influenced
+- Quality consistency improved
+
+Example pilot definition:
+
+> Build an internal AI assistant for customer support agents that summarizes tickets, retrieves relevant knowledge base articles, and drafts suggested responses. Humans approve all responses before sending. Pilot with 10 agents for 6 weeks. Success = 25% reduction in average handle time and 80% agent satisfaction.
+
+---
+
+### 9. Roadmap & Business Case
+
+After prioritization and pilot scoping, create an AI roadmap.
+
+Roadmap components:
+
+- Ranked use cases
+- Pilot plan
+- Required data work
+- Integration needs
+- Technology options
+- Governance model
+- Security review
+- Change management plan
+- Budget estimate
+- Timeline
+- Success metrics
+- Scaling approach
+
+The roadmap should distinguish between:
+
+- **Quick wins**
+- **Strategic bets**
+- **Data foundation work**
+- **Governance requirements**
+- **Long-term transformation opportunities**
+
+---
+
+### Recommended AI Discovery Workshop Agenda
+
+A useful workshop could run 2–4 hours.
+
+#### Part 1: Business Context
+
+- What are the organization’s top priorities?
+- Where are costs, delays, or quality problems?
+- What would make the biggest difference this year?
+
+#### Part 2: Workflow Mapping
+
+- Which workflows are manual or repetitive?
+- Where do people spend the most time?
+- Where does work get stuck?
+
+#### Part 3: Opportunity Brainstorm
+
+- Where could AI assist, augment, or automate?
+- What knowledge or data is underused?
+- What tasks require reading, writing, classifying, summarizing, or predicting?
+
+#### Part 4: Prioritization
+
+- Which ideas are high-value?
+- Which are feasible now?
+- Which are too risky or premature?
+- Which could become pilots?
+
+#### Part 5: Next Steps
+
+- Select 2–3 top candidates
+- Assign owners
+- Request data/system access review
+- Define pilot scope
+- Create business case
+
+---
+
+### Example AI Discovery Questions
+
+#### Business Questions
+
+- What are your biggest operational bottlenecks?
+- Which teams are overloaded?
+- Where do delays hurt customers or revenue?
+- What decisions are slow or inconsistent?
+- What would you automate if you could?
+
+#### User Questions
+
+- What tasks do you repeat every day?
+- What information do you constantly search for?
+- What work feels low-value but necessary?
+- Where do mistakes commonly happen?
+- What takes longer than it should?
+
+#### Data Questions
+
+- What documents, tickets, calls, or records are generated?
+- Is the data digital and accessible?
+- Who owns the data?
+- Are there sensitive fields?
+- Is data quality trusted?
+- Are outcomes tracked?
+
+#### Technical Questions
+
+- What systems are involved?
+- Are APIs available?
+- Is there a data warehouse?
+- What identity/security controls exist?
+- Can tools be embedded into current workflows?
+
+#### Risk Questions
+
+- What happens if the AI gives a wrong answer?
+- Does the use case require explainability?
+- Is human approval needed?
+- Are there legal or compliance concerns?
+- Could the AI expose sensitive information?
+
+---
+
+### Suggested Deliverables
+
+The AI discovery process should produce:
+
+1. **AI Opportunity Inventory**
+2. **Workflow Maps**
+3. **Data Readiness Assessment**
+4. **Use Case Prioritization Matrix**
+5. **Risk Assessment**
+6. **Pilot Recommendations**
+7. **AI Roadmap**
+8. **Business Case**
+9. **Governance Considerations**
+10. **Next-Step Implementation Plan**
+
+---
+
+## 2. Structured AsciiDoc Log
+
+```asciidoc
+= AI Discovery Process Brainstorm Log
+:status: Draft
+:owner: TBD
+:date: 2026-06-01
+
+== Objective
+
+Define a repeatable discovery process for identifying, evaluating, and prioritizing AI opportunities.
+
+Primary question:
+
+> Where can AI create measurable business value with acceptable feasibility, risk, and adoption potential?
+
+== Core Principles
+
+* Start with business problems, not AI tools.
+* Map workflows before proposing solutions.
+* Prioritize human-in-the-loop use cases first.
+* Evaluate data readiness early.
+* Balance business value, feasibility, risk, and adoption.
+* Define measurable pilot outcomes.
+* Treat governance, security, and change management as first-class requirements.
+
+== Discovery Phases
+
+[cols="1,3,3"]
+|===
+| Phase | Purpose | Outputs
+
+| 1. Context & Goals
+| Understand strategic priorities and desired outcomes.
+| Business objectives, AI success criteria, sponsor alignment
+
+| 2. Stakeholder Discovery
+| Interview people who own, execute, or are affected by workflows.
+| Stakeholder map, interview notes, pain point themes
+
+| 3. Workflow & Pain Point Mapping
+| Document current processes and identify friction.
+| Workflow maps, bottleneck list, process metrics
+
+| 4. AI Opportunity Identification
+| Convert problems into potential AI use cases.
+| AI opportunity inventory
+
+| 5. Data & Systems Assessment
+| Determine whether required data and systems are available.
+| Data readiness assessment, integration notes
+
+| 6. Feasibility & Risk Review
+| Assess technical feasibility, operational risk, compliance, and trust.
+| Risk matrix, feasibility scores
+
+| 7. Use Case Prioritization
+| Rank opportunities by value, feasibility, risk, and readiness.
+| Prioritized use case backlog
+
+| 8. Prototype / Pilot Definition
+| Define focused pilots for top candidates.
+| Pilot charters, success metrics, go/no-go criteria
+
+| 9. Roadmap & Business Case
+| Plan implementation and scaling.
+| AI roadmap, investment estimate, governance plan
+|===
+
+== Stakeholder Groups
+
+* Executive sponsors
+* Department leaders
+* Frontline users
+* Operations teams
+* IT and engineering
+* Data teams
+* Security
+* Legal and compliance
+* Customer support
+* Sales and marketing
+* Product teams
+* Finance and administration
+
+== Discovery Methods
+
+* 1:1 stakeholder interviews
+* Cross-functional workshops
+* Process walkthroughs
+* Workflow shadowing
+* Surveys
+* System inventory review
+* Data sample review
+* Metrics analysis
+* Risk and compliance review
+
+== Workflow Mapping Template
+
+For each workflow, capture:
+
+* Workflow name
+* Business owner
+* Users involved
+* Trigger event
+* Inputs
+* Process steps
+* Decision points
+* Systems used
+* Data used
+* Manual effort
+* Frequency / volume
+* Exceptions
+* Current pain points
+* Existing KPIs
+* Desired outcome
+
+== Pain Point Signals
+
+Look for:
+
+* Repetitive manual tasks
+* Copy/paste work
+* High-volume documents
+* Long search times
+* Manual classification or routing
+* Slow decision cycles
+* Knowledge trapped in experts' heads
+* Inconsistent quality
+* Error-prone handoffs
+* Compliance review burden
+* Customer response delays
+* Large backlogs
+
+== AI Opportunity Categories
+
+=== Knowledge and Search
+
+* Internal knowledge assistant
+* Policy Q&A
+* Technical support assistant
+* Enterprise search
+* Compliance knowledge lookup
+
+=== Content and Communication
+
+* Email drafting
+* Report generation
+* Meeting summarization
+* Marketing copy generation
+* Translation and rewriting
+
+=== Classification and Routing
+
+* Ticket classification
+* Email triage
+* Document categorization
+* Lead scoring
+* Risk flagging
+
+=== Extraction and Structuring
+
+* PDF data extraction
+* Invoice processing
+* Contract metadata extraction
+* Resume parsing
+* Form digitization
+
+=== Decision Support
+
+* Forecasting
+* Recommendations
+* Anomaly detection
+* Risk scoring
+* Next-best-action suggestions
+
+=== Workflow Automation
+
+* CRM updates
+* Form completion
+* Back-office automation
+* Multi-step AI agents
+* Human-in-the-loop workflow orchestration
+
+=== Customer Experience
+
+* Customer service chatbot
+* Virtual agent
+* Personalized recommendations
+* Sentiment analysis
+* Voice-of-customer analysis
+
+== Data Readiness Assessment
+
+Evaluate:
+
+* Data availability
+* Data owner
+* Data location
+* Data format
+* Data volume
+* Data quality
+* Label availability
+* Update frequency
+* Access permissions
+* Privacy constraints
+* Regulatory constraints
+* API availability
+* Integration complexity
+* Security classification
+
+== Feasibility Assessment
+
+Score each use case from 1 to 5.
+
+[cols="1,4"]
+|===
+| Dimension | Evaluation Question
+
+| Technical feasibility
+| Can current AI techniques solve this well enough?
+
+| Data readiness
+| Is the required data available, clean, and accessible?
+
+| Integration complexity
+| How difficult is it to connect into the workflow?
+
+| User adoption
+| Will users trust and use the AI output?
+
+| Measurability
+| Can success be measured clearly?
+
+| Time to pilot
+| Can a prototype be built quickly?
+
+| Scalability
+| Can the solution scale beyond the pilot group?
+|===
+
+== Risk Assessment
+
+Consider:
+
+* Hallucination risk
+* Inaccuracy risk
+* Privacy risk
+* Security risk
+* Bias and fairness risk
+* Compliance risk
+* Explainability requirements
+* Brand and reputation risk
+* Operational dependency risk
+* Change management risk
+* User trust risk
+
+== Prioritization Matrix
+
+Recommended scoring dimensions:
+
+[cols="1,1,3"]
+|===
+| Dimension | Score | Notes
+
+| Business value
+| 1-5
+| Revenue, cost, quality, speed, or risk impact
+
+| Pain intensity
+| 1-5
+| Severity of current problem
+
+| Frequency / volume
+| 1-5
+| How often the task occurs
+
+| Data readiness
+| 1-5
+| Availability and quality of required data
+
+| Technical feasibility
+| 1-5
+| Likelihood AI can perform well
+
+| Adoption likelihood
+| 1-5
+| User willingness and workflow fit
+
+| Risk level
+| 1-5
+| Reverse score if desired: lower risk = higher score
+
+| Time to pilot
+| 1-5
+| Faster pilots score higher
+
+| Executive sponsorship
+| 1-5
+| Strength of leadership support
+|===
+
+== Example Prioritized Use Cases
+
+[cols="2,1,1,1,1,1"]
+|===
+| Use Case | Value | Feasibility | Risk | Data Readiness | Priority
+
+| Support ticket summarization
+| High
+| High
+| Low
+| High
+| 1
+
+| Internal knowledge assistant
+| High
+| High
+| Medium
+| Medium
+| 2
+
+| Contract metadata extraction
+| High
+| Medium
+| Medium
+| Medium
+| 3
+
+| Sales call summarization and CRM update
+| Medium
+| High
+| Low
+| High
+| 4
+
+| Fully autonomous customer support agent
+| High
+| Low
+| High
+| Medium
+| Later
+|===
+
+== Pilot Charter Template
+
+For each selected pilot:
+
+* Pilot name
+* Business owner
+* Technical owner
+* User group
+* Problem statement
+* AI capability required
+* Data sources
+* Systems involved
+* Human review requirements
+* Security and compliance requirements
+* Pilot scope
+* Out-of-scope items
+* Timeline
+* Success metrics
+* Baseline metrics
+* Go/no-go criteria
+* Rollout plan
+
+== Example Pilot
+
+=== Pilot Name
+
+Customer Support AI Assistant
+
+=== Problem
+
+Support agents spend significant time reading long ticket histories, searching knowledge base articles, and drafting responses.
+
+=== Proposed AI Capability
+
+AI assistant that:
+
+* Summarizes ticket history
+* Retrieves relevant knowledge base articles
+* Suggests draft responses
+* Flags missing information
+
+=== Human-in-the-Loop Design
+
+* AI drafts are suggestions only.
+* Agents review and edit before sending.
+* Feedback is collected for improvement.
+
+=== Pilot Group
+
+* 10 support agents
+* 6-week pilot period
+
+=== Success Metrics
+
+* 25% reduction in average handle time
+* 15% increase in first-contact resolution
+* 80% positive agent satisfaction
+* No increase in escalation rate
+* No critical compliance incidents
+
+== Roadmap Structure
+
+=== Quick Wins
+
+* Low-risk, high-feasibility AI assistants
+* Internal summarization tools
+* Search and retrieval use cases
+* Drafting and classification support
+
+=== Strategic Bets
+
+* Advanced workflow automation
+* Predictive decision support
+* Customer-facing AI products
+* AI-enabled personalization
+
+=== Data Foundation Work
+
+* Data catalog
+* Knowledge base cleanup
+* Document digitization
+* API enablement
+* Data governance
+* Access control
+
+=== Governance Work
+
+* AI usage policy
+* Security review process
+* Model risk management
+* Human review standards
+* Monitoring and audit logging
+* Vendor evaluation framework
+
+== Key Discovery Questions
+
+=== Business Questions
+
+* What are the top business priorities this year?
+* Where are costs highest?
+* Where are delays most painful?
+* Which processes affect customer experience?
+* What outcomes would justify AI investment?
+
+=== User Questions
+
+* What tasks do you repeat every day?
+* What information is hard to find?
+* What work feels manual or low-value?
+* Where do mistakes happen?
+* What would save you the most time?
+
+=== Data Questions
+
+* What data is generated by this process?
+* Where is the data stored?
+* Who owns the data?
+* Is it structured or unstructured?
+* Is it sensitive or regulated?
+* Can it be accessed securely?
+
+=== Technical Questions
+
+* What systems are involved?
+* Are APIs available?
+* Is there a data warehouse?
+* How are users authenticated?
+* Can the AI tool be embedded into existing workflows?
+
+=== Risk Questions
+
+* What happens if the AI is wrong?
+* Is explainability required?
+* Is human approval needed?
+* Could sensitive data be exposed?
+* Are there compliance or legal concerns?
+
+== Discovery Deliverables
+
+* Stakeholder map
+* Workflow maps
+* Pain point inventory
+* AI opportunity backlog
+* Data readiness assessment
+* Feasibility assessment
+* Risk assessment
+* Prioritization matrix
+* Recommended pilots
+* Pilot charters
+* AI roadmap
+* Business case
+* Governance recommendations
+
+== Suggested Next Steps
+
+. Identify executive sponsor.
+. Select 2-3 departments for discovery.
+. Schedule stakeholder interviews.
+. Run workflow mapping workshops.
+. Inventory available data and systems.
+. Generate AI opportunity backlog.
+. Score and prioritize use cases.
+. Select 1-2 pilot candidates.
+. Define pilot charters.
+. Begin technical and data validation.
+```

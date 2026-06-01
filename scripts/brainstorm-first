@@ -1,0 +1,10 @@
+
+#!/usr/bin/env bash
+TOPIC="$*"
+
+if [ -z "$TOPIC" ]; then
+  echo "Usage: brainstorm <topic>"
+  exit 1
+fi
+
+python3 "$(dirname "$0")/../brainstorm_cli.py" "$TOPIC"
