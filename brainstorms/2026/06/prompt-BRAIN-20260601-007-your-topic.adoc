@@ -1,0 +1,15 @@
+= Prompt Artifact
+
+[metadata]
+----
+ID: BRAIN-20260601-007
+Date: 2026-06-01
+Topic: your topic
+ArtifactType: Prompt
+RelatedBrainstorm: BRAIN-20260601-007
+----
+
+[prompt]
+----
+brainstorm your topic
+----
