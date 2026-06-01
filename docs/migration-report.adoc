@@ -1,0 +1,242 @@
+= Migration Report
+:date: 2026-06-01
+:repo: investigative-workflow
+
+== Summary
+
+This repository is a small Brainstorm OS prototype with two overlapping workflows:
+
+* A Python/OpenAI CLI workflow driven by `brainstorm_cli.py` and `scripts/brainstorm`.
+* A local VS Code/template workflow driven by `.vscode/tasks.json` and `scripts/new-brainstorm.sh`.
+
+The project currently stores source files, generated brainstorm artifacts, packaging zip files, and runtime state in the same Git repository.
+
+== Current Repository Shape
+
+Tracked source/config files:
+
+* `brainstorm_cli.py`
+* `scripts/brainstorm`
+* `scripts/new-brainstorm.sh`
+* `scripts/brainstorm-local`
+* `.vscode/tasks.json`
+* `requirements.txt`
+* `README.md`
+* `README-2.md`
+* `.gitignore`
+* `.gitattributes`
+
+Tracked generated/state files:
+
+* `.brainstorm-counter`
+* `brainstorms/2026/06/*.adoc`
+* `brainstorm-os-cli.zip`
+* `brainstorm-os-vscode.zip`
+
+== Workflows Found
+
+=== OpenAI CLI Workflow
+
+Entry point:
+
+* `scripts/brainstorm`
+
+Implementation:
+
+* `brainstorm_cli.py`
+
+Behavior:
+
+* Accepts a topic argument.
+* Calls the OpenAI Responses API.
+* Writes a generated brainstorm file to `brainstorms/YYYY/MM/`.
+* Writes a prompt artifact beside it.
+* Increments `.brainstorm-counter`.
+
+Dependency:
+
+* `openai>=2.0.0`
+
+Migration notes:
+
+* The configured model is `gpt-5.5`, which should be verified before production use.
+* The script imports `json` but does not use it.
+* API key handling depends on `OPENAI_API_KEY`.
+* The counter write is not atomic, so concurrent runs can collide.
+* Existing generated files are tracked in Git.
+
+=== Local Template Workflow
+
+Entry point:
+
+* `.vscode/tasks.json`
+
+Implementation:
+
+* `scripts/new-brainstorm.sh`
+
+Behavior:
+
+* Prompts for a topic.
+* Computes `BRAIN-YYYYMMDD-NNN`.
+* Creates a manual-fill AsciiDoc brainstorm file.
+* Creates a prompt artifact.
+* Increments `.brainstorm-counter`.
+
+Migration notes:
+
+* This path does not call OpenAI.
+* Slug generation can leave a trailing hyphen.
+* File creation uses shell heredocs.
+* It shares the same counter file as the Python workflow.
+
+=== Demonstration Script
+
+File:
+
+* `scripts/brainstorm-local`
+
+Behavior:
+
+* Contains setup notes and example invocations.
+* Runs real commands if executed, including generating brainstorms, opening VS Code, and committing to Git.
+
+Migration notes:
+
+* This file reads more like documentation than a safe executable script.
+* It should likely become documentation or be renamed to make execution intent clear.
+
+== Data And Artifact Inventory
+
+Existing brainstorm artifacts:
+
+* `BRAIN-20260601-001-elon-musk.adoc`
+* `BRAIN-20260601-003-ai-discovery-process.adoc`
+* `BRAIN-20260601-004-mathematical-teleology.adoc`
+* `BRAIN-20260601-005-evolution-as-constrained-search.adoc`
+* `BRAIN-20260601-006-genomic-anomaly-detection.adoc`
+
+Existing prompt artifacts:
+
+* `prompt-BRAIN-20260601-001-elon-musk.adoc`
+* `prompt-BRAIN-20260601-003-ai-discovery-process.adoc`
+* `prompt-BRAIN-20260601-004-mathematical-teleology.adoc`
+* `prompt-BRAIN-20260601-005-evolution-as-constrained-search.adoc`
+* `prompt-BRAIN-20260601-006-genomic-anomaly-detection.adoc`
+
+Counter state:
+
+* `.brainstorm-counter` currently contains `7`.
+
+Observation:
+
+* ID `BRAIN-20260601-002` is absent from the tracked brainstorm files.
+* The counter indicates the next generated ID will likely be `BRAIN-20260601-007`.
+
+== Packaging Inventory
+
+Tracked archives:
+
+* `brainstorm-os-cli.zip`
+* `brainstorm-os-vscode.zip`
+
+Archive contents match the current scaffold families:
+
+* `brainstorm-os-cli.zip` contains `brainstorm_cli.py`, `requirements.txt`, `README.md`, and `scripts/brainstorm`.
+* `brainstorm-os-vscode.zip` contains `.vscode/tasks.json`, `scripts/new-brainstorm.sh`, `README.md`, and an empty `brainstorms/` directory.
+
+Migration notes:
+
+* Keeping generated zip files tracked beside source increases drift risk.
+* Prefer reproducible packaging from source during release.
+
+== Risks
+
+=== High
+
+* Generated content and source code are mixed in one repository without clear boundaries.
+* `.brainstorm-counter` is tracked mutable state, which can cause merge conflicts and duplicate IDs.
+* The OpenAI model name should be verified before relying on the CLI.
+
+=== Medium
+
+* Two creation flows share the same output shape but are implemented separately.
+* The local shell script and Python CLI may slug topics differently.
+* `scripts/brainstorm-local` is executable-looking documentation that performs real actions.
+* Zip archives may become stale relative to source files.
+
+=== Low
+
+* `README.md` and `README-2.md` split related documentation.
+* `.gitignore` only ignores `.venv/`; common local files such as `.env`, caches, and OS/editor artifacts are not ignored.
+* `brainstorm_cli.py` has an unused `json` import.
+
+== Recommended Migration Plan
+
+=== Phase 1: Stabilize Repository Boundaries
+
+* Decide whether generated brainstorm files should remain tracked.
+* Decide whether `.brainstorm-counter` should remain tracked.
+* Move release archives out of normal source tracking or regenerate them during release.
+* Consolidate README content.
+
+=== Phase 2: Unify Generation Logic
+
+* Choose one primary generator implementation.
+* Reuse one slugification and ID-generation path.
+* Add collision checks before writing files.
+* Make counter updates safer.
+
+=== Phase 3: Clarify Interfaces
+
+* Keep `scripts/brainstorm` as the main command.
+* Convert `scripts/brainstorm-local` into documentation or a dry-run-safe example.
+* Keep VS Code task support as a wrapper around the same core generator.
+
+=== Phase 4: Production Hardening
+
+* Validate environment variables before API calls.
+* Verify model availability.
+* Add error handling around network/API failures.
+* Add a simple test suite for slugging, ID generation, and file naming.
+* Add packaging automation if zip distribution remains necessary.
+
+== Suggested Target Layout
+
+[source,text]
+----
+README.md
+requirements.txt
+brainstorm_cli.py
+scripts/
+  brainstorm
+docs/
+  usage.adoc
+  migration-report.adoc
+brainstorms/
+  YYYY/
+    MM/
+      BRAIN-*.adoc
+      prompt-BRAIN-*.adoc
+----
+
+Optional, if generated files should be separated:
+
+[source,text]
+----
+src/
+  brainstorm_cli.py
+scripts/
+  brainstorm
+docs/
+  usage.adoc
+examples/
+  brainstorms/
+----
+
+== Verification Performed
+
+Read-only inspection commands were used.
+
+No files were created, edited, deleted, extracted, or reformatted.
+No tests were run.

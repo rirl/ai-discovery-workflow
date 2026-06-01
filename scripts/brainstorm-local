@@ -5,8 +5,8 @@
 #
 # Assumptions:
 #   - Repository root contains:
-#       brainstorm_cli.py
-#       requirements.txt
+#       scripts/brainstorm_cli.py
+#       scripts/requirements.txt
 #       scripts/brainstorm
 #
 #   - OPENAI_API_KEY is configured
@@ -22,7 +22,7 @@ set -e
 
 # source .venv/bin/activate
 
-# pip install -r requirements.txt
+# pip install -r scripts/requirements.txt
 
 # export OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
 

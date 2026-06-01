@@ -1,0 +1,63 @@
+= Final Migration Report
+:date: 2026-06-01
+:repo: investigative-workflow
+
+== Architecture Target
+
+The repository was migrated toward the architecture defined in `docs/repository-architecture.adoc`.
+
+Required top-level directories:
+
+* `brainstorms/`
+* `concepts/`
+* `projects/`
+* `synthesis/`
+* `docs/`
+* `scripts/`
+
+== Structural Changes
+
+Documentation files were moved under `docs/`.
+
+Executable and automation files were kept under `scripts/`.
+
+Generated brainstorm records remain under `brainstorms/`.
+
+Zip archives were moved under `docs/archive/` to remove package artifacts from the repository root.
+
+Missing architecture directories were created with `.gitkeep` placeholders.
+
+== File Moves
+
+* `README.md` -> `docs/README-vscode-prototype.md`
+* `README-2.md` -> `docs/README-cli.md`
+* `migration-report.adoc` -> `docs/migration-report.adoc`
+* `brainstorm_cli.py` -> `scripts/brainstorm_cli.py`
+* `requirements.txt` -> `scripts/requirements.txt`
+* `brainstorm-os-cli.zip` -> `docs/archive/brainstorm-os-cli.zip`
+* `brainstorm-os-vscode.zip` -> `docs/archive/brainstorm-os-vscode.zip`
+* `brainstorm-os-automation.zip` -> `docs/archive/brainstorm-os-automation.zip`
+
+== Script Updates
+
+`scripts/brainstorm` was updated to call `scripts/brainstorm_cli.py`.
+
+Setup references to `requirements.txt` were updated to `scripts/requirements.txt` in active documentation and helper material.
+
+== Resulting Top-Level Layout
+
+[source,text]
+----
+brainstorms/
+concepts/
+docs/
+projects/
+scripts/
+synthesis/
+----
+
+== Remaining Notes
+
+The repository still contains generated brainstorm artifacts in `brainstorms/`.
+
+The `.brainstorm-counter` file remains a runtime-state concern and should be reviewed separately if multiple branches or users will create brainstorm entries.

@@ -1,0 +1,11 @@
+= Brainstorm OS Repository Architecture
+
+[directories]
+----
+brainstorms/
+concepts/
+projects/
+synthesis/
+docs/
+scripts/
+----

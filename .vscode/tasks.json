@@ -1,12 +1,10 @@
-
 {
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Brainstorm: New Entry",
+      "label": "Brainstorm OS: Apply Architecture",
       "type": "shell",
-      "command": "${workspaceFolder}/scripts/new-brainstorm.sh",
-      "problemMatcher": []
+      "command": "./scripts/apply-architecture.sh"
     }
   ]
 }
