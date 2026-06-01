@@ -1,0 +1,15 @@
+= Prompt Artifact
+
+[metadata]
+----
+ID: BRAIN-20260601-001
+Date: 2026-06-01
+Topic: elon-musk
+ArtifactType: Prompt
+RelatedBrainstorm: BRAIN-20260601-001
+----
+
+[prompt]
+----
+brainstorm elon-musk
+----

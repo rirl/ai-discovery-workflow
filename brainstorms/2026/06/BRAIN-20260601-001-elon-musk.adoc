@@ -1,0 +1,17 @@
+= elon-musk
+
+[metadata]
+----
+ID: BRAIN-20260601-001
+Date: 2026-06-01
+Topic: elon-musk
+Status: Active
+----
+
+== Human Discussion
+
+Paste ChatGPT discussion here.
+
+== Structured Log
+
+Paste ChatGPT structured log here.
