@@ -1,121 +1,45 @@
 #!/usr/bin/env bash
-
-###############################################################################
-# Brainstorm OS Usage Examples
-#
-# Assumptions:
-#   - Repository root contains:
-#       scripts/brainstorm_cli.py
-#       scripts/requirements.txt
-#       scripts/brainstorm
-#
-#   - OPENAI_API_KEY is configured
-###############################################################################
-
 set -e
 
-###############################################################################
-# ONE-TIME SETUP
-###############################################################################
+cat <<'EOF'
+Brainstorm OS local workflow examples
 
-# python3 -m venv .venv
+Setup:
 
-# source .venv/bin/activate
+  python3 -m venv .venv
+  source .venv/bin/activate
+  pip install -r scripts/requirements.txt
+  export OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
+  chmod +x scripts/brainstorm
 
-# pip install -r scripts/requirements.txt
+Create a brainstorm:
 
-# export OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
+  ./scripts/brainstorm "AI Discovery Process"
 
-# chmod +x scripts/brainstorm
+List generated files:
 
-###############################################################################
-# CREATE A NEW BRAINSTORM ENTRY
-###############################################################################
+  find brainstorms -name "*.adoc"
 
-./scripts/brainstorm "AI Discovery Process"
+Open the latest brainstorm:
 
-###############################################################################
-# RESULT
-#
-# brainstorms/YYYY/MM/
-#
-# ├── BRAIN-YYYYMMDD-001-ai-discovery-process.adoc
-# └── prompt-BRAIN-YYYYMMDD-001-ai-discovery-process.adoc
-###############################################################################
+  code "$(find brainstorms -name "BRAIN-*.adoc" | sort | tail -1)"
 
-###############################################################################
-# REVIEW GENERATED FILES
-###############################################################################
+Optional Git workflow:
 
-find brainstorms -name "*.adoc"
+  git add brainstorms/
+  git commit -m "Add brainstorm entry"
 
-###############################################################################
-# OPEN LATEST BRAINSTORM
-###############################################################################
+Planned command families:
 
-LATEST=$(find brainstorms -name "BRAIN-*.adoc" | sort | tail -1)
+  brainstorm create "topic"
+  brainstorm prompt
+  brainstorm concept "concept-name"
+  brainstorm critique "claim"
+  brainstorm synthesize "project-name"
+  brainstorm proposal "topic"
+  brainstorm argument-map "project-name"
+  brainstorm book-outline "project-name"
 
-code "$LATEST"
-
-###############################################################################
-# OPEN ASSOCIATED PROMPT FILE
-###############################################################################
-
-PROMPT=$(find brainstorms -name "prompt-*.adoc" | sort | tail -1)
-
-code "$PROMPT"
-
-###############################################################################
-# GIT WORKFLOW
-###############################################################################
-
-git add brainstorms/
-
-git commit -m "Add brainstorm entry"
-
-###############################################################################
-# OPTIONAL: CREATE MULTIPLE ENTRIES
-###############################################################################
-
-./scripts/brainstorm "Mathematical Teleology"
-
-./scripts/brainstorm "Evolution As Constrained Search"
-
-./scripts/brainstorm "Genomic Anomaly Detection"
-
-###############################################################################
-# VIEW HISTORY
-###############################################################################
-
-git log --oneline
-
-###############################################################################
-# LIST BRAINSTORMS CREATED TODAY
-###############################################################################
-
-TODAY=$(date +%Y%m%d)
-
-find brainstorms -name "*${TODAY}*.adoc"
-
-###############################################################################
-# EXAMPLE ALIAS
-###############################################################################
-
-alias brainstorm='./scripts/brainstorm'
-
-brainstorm "AI Discovery Process"
-
-###############################################################################
-# FUTURE BRAINSTORM OS COMMANDS (PLANNED)
-###############################################################################
-#
-# brainstorm create "topic"
-# brainstorm prompt
-# brainstorm concept "concept-name"
-# brainstorm critique "claim"
-# brainstorm synthesize "project-name"
-# brainstorm proposal "topic"
-# brainstorm argument-map "project-name"
-# brainstorm book-outline "project-name"
-#
-###############################################################################
+This script prints examples only; it does not create files, open editors, or
+commit changes.
+EOF

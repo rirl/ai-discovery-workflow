@@ -1,5 +1,11 @@
 
 #!/usr/bin/env bash
+#
+# Legacy local template generator.
+#
+# The canonical brainstorm generator is scripts/brainstorm, which calls the
+# Python/OpenAI workflow. Keep this script only when an offline template is
+# useful.
 
 read -p "Topic: " TOPIC
 
