@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+
+###############################################################################
+# Brainstorm OS Usage Examples
+#
+# Assumptions:
+#   - Repository root contains:
+#       brainstorm_cli.py
+#       requirements.txt
+#       scripts/brainstorm
+#
+#   - OPENAI_API_KEY is configured
+###############################################################################
+
+set -e
+
+###############################################################################
+# ONE-TIME SETUP
+###############################################################################
+
+# python3 -m venv .venv
+
+# source .venv/bin/activate
+
+# pip install -r requirements.txt
+
+# export OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
+
+# chmod +x scripts/brainstorm
+
+###############################################################################
+# CREATE A NEW BRAINSTORM ENTRY
+###############################################################################
+
+./scripts/brainstorm "AI Discovery Process"
+
+###############################################################################
+# RESULT
+#
+# brainstorms/YYYY/MM/
+#
+# ├── BRAIN-YYYYMMDD-001-ai-discovery-process.adoc
+# └── prompt-BRAIN-YYYYMMDD-001-ai-discovery-process.adoc
+###############################################################################
+
+###############################################################################
+# REVIEW GENERATED FILES
+###############################################################################
+
+find brainstorms -name "*.adoc"
+
+###############################################################################
+# OPEN LATEST BRAINSTORM
+###############################################################################
+
+LATEST=$(find brainstorms -name "BRAIN-*.adoc" | sort | tail -1)
+
+code "$LATEST"
+
+###############################################################################
+# OPEN ASSOCIATED PROMPT FILE
+###############################################################################
+
+PROMPT=$(find brainstorms -name "prompt-*.adoc" | sort | tail -1)
+
+code "$PROMPT"
+
+###############################################################################
+# GIT WORKFLOW
+###############################################################################
+
+git add brainstorms/
+
+git commit -m "Add brainstorm entry"
+
+###############################################################################
+# OPTIONAL: CREATE MULTIPLE ENTRIES
+###############################################################################
+
+./scripts/brainstorm "Mathematical Teleology"
+
+./scripts/brainstorm "Evolution As Constrained Search"
+
+./scripts/brainstorm "Genomic Anomaly Detection"
+
+###############################################################################
+# VIEW HISTORY
+###############################################################################
+
+git log --oneline
+
+###############################################################################
+# LIST BRAINSTORMS CREATED TODAY
+###############################################################################
+
+TODAY=$(date +%Y%m%d)
+
+find brainstorms -name "*${TODAY}*.adoc"
+
+###############################################################################
+# EXAMPLE ALIAS
+###############################################################################
+
+alias brainstorm='./scripts/brainstorm'
+
+brainstorm "AI Discovery Process"
+
+###############################################################################
+# FUTURE BRAINSTORM OS COMMANDS (PLANNED)
+###############################################################################
+#
+# brainstorm create "topic"
+# brainstorm prompt
+# brainstorm concept "concept-name"
+# brainstorm critique "claim"
+# brainstorm synthesize "project-name"
+# brainstorm proposal "topic"
+# brainstorm argument-map "project-name"
+# brainstorm book-outline "project-name"
+#
+###############################################################################

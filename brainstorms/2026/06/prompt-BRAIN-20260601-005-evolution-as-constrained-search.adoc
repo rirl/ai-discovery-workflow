@@ -1,0 +1,15 @@
+= Prompt Artifact
+
+[metadata]
+----
+ID: BRAIN-20260601-005
+Date: 2026-06-01
+Topic: Evolution As Constrained Search
+ArtifactType: Prompt
+RelatedBrainstorm: BRAIN-20260601-005
+----
+
+[prompt]
+----
+brainstorm Evolution As Constrained Search
+----

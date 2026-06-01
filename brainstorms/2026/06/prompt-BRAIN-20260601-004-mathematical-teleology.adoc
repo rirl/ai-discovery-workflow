@@ -1,0 +1,15 @@
+= Prompt Artifact
+
+[metadata]
+----
+ID: BRAIN-20260601-004
+Date: 2026-06-01
+Topic: Mathematical Teleology
+ArtifactType: Prompt
+RelatedBrainstorm: BRAIN-20260601-004
+----
+
+[prompt]
+----
+brainstorm Mathematical Teleology
+----
