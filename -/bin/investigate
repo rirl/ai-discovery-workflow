@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Resolve repo root (one level up from this script)
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+# Execute the Python CLI
+python3 "$script_dir/scripts/brainstorm_cli.py" "$@"

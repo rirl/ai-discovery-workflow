@@ -133,16 +133,62 @@ def create(topic, repo=".", model=None):
     print(brainfile)
     print(promptfile)
 
+def list_brainstorms(repo="."):
+    ""List brainstorm files in the repository."""
+    repo = Path(repo)
+    base = repo / "brainstorms"
+    if not base.exists():
+        print("No brainstorms found.")
+        return
+    for path in sorted(base.rglob('*.adoc')):
+        print(path)
+
+
+def show_brainstorm(path):
+    p = Path(path)
+    if not p.exists():
+        raise SystemExit(f"Error: file does not exist: {p}")
+    print(p.read_text(encoding='utf-8'))
+
+
 def main():
     parser = argparse.ArgumentParser(
-        description="Create a new brainstorm document using OpenAI"
+        description="Create and manage brainstorm documents (investigate CLI)"
     )
-    parser.add_argument("topic", help="The topic to brainstorm about")
+    # legacy shorthand: allow topic at top-level to preserve backwards compatibility
+    parser.add_argument("topic", nargs='?', help="Legacy: topic to brainstorm (shorthand for 'create')")
     parser.add_argument("-r", "--repo", default=".", help="Repository path (default: .)")
     parser.add_argument("-m", "--model", help=f"OpenAI model (default: {DEFAULT_MODEL})")
 
+    subparsers = parser.add_subparsers(dest='command', title='subcommands', description='valid subcommands')
+
+    # create subcommand
+    p_create = subparsers.add_parser('create', help='Create a new brainstorm document')
+    p_create.add_argument('topic', help='The topic to brainstorm about')
+    p_create.add_argument('-r', '--repo', default='.', help='Repository path (default: .)')
+    p_create.add_argument('-m', '--model', help=f'OpenAI model (default: {DEFAULT_MODEL})')
+
+    # list subcommand
+    p_list = subparsers.add_parser('list', help='List existing brainstorm documents')
+    p_list.add_argument('-r', '--repo', default='.', help='Repository path (default: .)')
+
+    # show subcommand
+    p_show = subparsers.add_parser('show', help='Show a brainstorm file')
+    p_show.add_argument('path', help='Path to brainstorm .adoc file')
+
     args = parser.parse_args()
-    create(args.topic, repo=args.repo, model=args.model)
+
+    if args.command == 'create':
+        create(args.topic, repo=args.repo, model=args.model)
+    elif args.command == 'list':
+        list_brainstorms(repo=args.repo)
+    elif args.command == 'show':
+        show_brainstorm(args.path)
+    elif args.command is None and args.topic:
+        # legacy invocation: `brainstorm "topic"`
+        create(args.topic, repo=args.repo, model=args.model)
+    else:
+        parser.print_help()
 
 if __name__ == "__main__":
     main()
