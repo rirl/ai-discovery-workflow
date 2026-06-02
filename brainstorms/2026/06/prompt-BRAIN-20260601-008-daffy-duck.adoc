@@ -1,0 +1,15 @@
+= Prompt Artifact
+
+[metadata]
+----
+ID: BRAIN-20260601-008
+Date: 2026-06-01
+Topic: Daffy Duck
+ArtifactType: Prompt
+RelatedBrainstorm: BRAIN-20260601-008
+----
+
+[prompt]
+----
+brainstorm Daffy Duck
+----
