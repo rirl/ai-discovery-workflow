@@ -7,28 +7,30 @@ import re
 import sys
 from pathlib import Path
 from datetime import datetime
-from openai import OpenAI, APIError, APIConnectionError, RateLimitError
+from openai import OpenAI, APIError, APIConnectionError, RateLimitError  # exceptions used in generate_response()
 
-DEFAULT_MODEL = "gpt-5.5"
+DEFAULT_MODEL = "gpt-4o-mini"
 MAX_SLUG_LENGTH = 50
 
 def slugify(s, max_length=MAX_SLUG_LENGTH):
-    s = s.lower()
+    s = (s or "").lower()
     s = re.sub(r'[^a-z0-9]+', '-', s)
     s = s.strip('-')
+    if not s:
+        raise ValueError("Error: Unable to create slug from input; contains no alphanumeric characters")
     return s[:max_length]
 
 def next_id(repo):
-    counter = repo / ".brainstorm-counter"
+    counter_file = repo / ".brainstorm-counter"
     lock_file = repo / ".brainstorm-counter.lock"
 
     with open(lock_file, 'w') as lock:
         fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
         try:
             n = 1
-            if counter.exists():
-                n = int(counter.read_text().strip())
-            counter.write_text(str(n + 1))
+            if counter_file.exists():
+                n = int(counter_file.read_text().strip())
+            counter_file.write_text(str(n + 1))
             return n
         finally:
             fcntl.flock(lock.fileno(), fcntl.LOCK_UN)

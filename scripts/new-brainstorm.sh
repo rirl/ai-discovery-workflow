@@ -15,19 +15,23 @@ MONTH=$(date +%m)
 
 COUNTER_FILE=".brainstorm-counter"
 
-if [ ! -f "$COUNTER_FILE" ]; then
-  echo "1" > "$COUNTER_FILE"
-fi
+LOCK_FILE=".brainstorm-counter.lock"
+(
+  flock -n 200 || { echo "Error: Another instance is running. Exiting."; exit 1; }
+  if [ ! -f "$COUNTER_FILE" ]; then
+    echo "1" > "$COUNTER_FILE"
+  fi
 
-NUM=$(cat "$COUNTER_FILE")
-printf -v PAD "%03d" "$NUM"
+  NUM=$(cat "$COUNTER_FILE")
+  printf -v PAD "%03d" "$NUM"
 
-ID="BRAIN-${DATE}-${PAD}"
+  ID="BRAIN-${DATE}-${PAD}"
 
-NEXT=$((NUM+1))
-echo "$NEXT" > "$COUNTER_FILE"
+  NEXT=$((NUM+1))
+  echo "$NEXT" > "$COUNTER_FILE"
+) 200>$LOCK_FILE
 
-SLUG=$(echo "$TOPIC" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g')
+SLUG=$(echo "$TOPIC" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g; s/--*/-/g; s/^-//; s/-$//')
 
 DIR="brainstorms/${YEAR}/${MONTH}"
 mkdir -p "$DIR"
