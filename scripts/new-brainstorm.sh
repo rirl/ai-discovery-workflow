@@ -14,14 +14,12 @@ YEAR=$(date +%Y)
 MONTH=$(date +%m)
 
 COUNTER_FILE=".brainstorm-counter"
-
 LOCK_FILE=".brainstorm-counter.lock"
-(
+{
   flock -n 200 || { echo "Error: Another instance is running. Exiting."; exit 1; }
   if [ ! -f "$COUNTER_FILE" ]; then
     echo "1" > "$COUNTER_FILE"
   fi
-
   NUM=$(cat "$COUNTER_FILE")
   printf -v PAD "%03d" "$NUM"
 
@@ -29,7 +27,7 @@ LOCK_FILE=".brainstorm-counter.lock"
 
   NEXT=$((NUM+1))
   echo "$NEXT" > "$COUNTER_FILE"
-) 200>$LOCK_FILE
+} 200>"$LOCK_FILE"
 
 SLUG=$(echo "$TOPIC" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g; s/--*/-/g; s/^-//; s/-$//')
 
